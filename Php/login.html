@@ -38,47 +38,41 @@
         </div>
     </nav>
 
-
-
     <section class="page-section" id="login">
         <div class="container">
             <div class="text-center">
-                <h2 class="section-heading text-uppercase">login</h2>
-            </div>
-            <form id="contactForm" data-sb-form-api-token="API_TOKEN">
-                <div class="row align-items-stretch mb-5">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <!-- Email input-->
-                            <input class="form-control" id="email" type="email" placeholder="Seu Email *"
-                                data-sb-validations="required,email" />
-                            <div class="invalid-feedback" data-sb-feedback="email:required">Email Necessario</div>
-                            <div class="invalid-feedback" data-sb-feedback="email:email">Email não Valido.</div>
-                        </div>
-                        <div class="form-group">
-                            <!-- Senha address input-->
-                            <input class="form-control" id="Senha" type="password" placeholder="Sua Senha *"
-                                data-sb-validations="required,password" />
-                            <div class="invalid-feedback" data-sb-feedback="password:required">Senha Necessaria.</div>
-                            <div class="invalid-feedback" data-sb-feedback="password:password">Senha Não Valida.</div>
-                        </div>
+                <h2 class="section-heading text-uppercase">Login</h2>
+                <div class="column is-4 is-offset-4">
+                    <?php
+                    if(isset($_SESSION['nao_autenticado'])):
+                    ?>
+                    <div class="notification is-danger">
+                        <p>ERRO: Usuário ou senha inválidos.</p>
+                    </div>
+                    <?php
+                    endif;
+                    unset($_SESSION['nao_autenticado']);
+                    ?>
+                    <div class="form-group">
+                        <form action="login.php" method="POST">
+                            <div class="field">
+                                <div class="form-group">
+                                    <input name="usuario" name="text" class="input is-large" placeholder="Seu Email"
+                                        autofocus="">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="form-group">
+                                    <input name="senha" class="input is-large" type="password" placeholder="Sua senha">
+                                </div>
+                            </div>
+                            <div class="text-center"><button type="submit"
+                                    class="btn btn-primary is-block is-link is-large is-fullwidth">Login</button>
+                        </form>
                     </div>
                 </div>
-                <!-- Login success -->
-                <div class="d-senha" id="submitSuccessMessage">
-                    <div class="text-center text-white mb-3">
-                        <div class="fw-bolder"></div>
-                        <br />
-                        <a>Login Evetuado! </a>
-                    </div>
-                    <!-- Submit error message-->
-                    <div class="d-none" id="submitErrorMessage">
-                        <div class="text-center text-danger mb-3">Error ao efetuar Login!</div>
-                    </div>
-                    <!-- Submit Button-->
-                    <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled"
-                            id="submitButton" type="submit">Login</button></div>
-            </form>
+            </div>
         </div>
     </section>
 
