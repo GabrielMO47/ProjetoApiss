@@ -11478,3 +11478,10 @@ input[type="submit"]:hover{
   animation-timing-function: ease;
   animation-fill-mode: both;
 }
+table, th, td {
+  width: 50%;
+  border: 1px solid blue;
+  border-collapse: collapse;
+  padding: 3px;
+  background-color: #CC8623;
+ }
